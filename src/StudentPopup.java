@@ -1,3 +1,7 @@
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,12 +28,16 @@ public String getName()
 }
 public int[] getMarks ()
 {
-    int marks[] = new int[3];
-    marks[0] = Integer.parseInt(tblmarks.getValueAt(0,0).toString());
-    marks[1] = Integer.parseInt(tblmarks.getValueAt(0,1).toString());
-    marks[2] = Integer.parseInt(tblmarks.getValueAt(0,2).toString());
+ int marks[] = new int[3];
+    try{
+   DefaultTableModel model = (DefaultTableModel)tblmarks.getModel();
+    marks[0] = Integer.parseInt(model.getValueAt(0,0).toString());
+    marks[1] = Integer.parseInt(model.getValueAt(0,1).toString());
+    marks[2] = Integer.parseInt(model.getValueAt(0,2).toString());
+  
+    }catch(Exception e){JOptionPane.showMessageDialog(this,"fill out all fields");}
     return marks;
-}
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
