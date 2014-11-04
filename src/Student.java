@@ -6,27 +6,23 @@ public class Student {
     	private String name;
     
 	//turn this into an array///////////////
-    	private int mark[]= new int [3]; 
+    	private int test[]= new int [3]; 
 
 
  //constructor methods - 3 ways you can make a student
 
-      public Student(){
-		this("", 0, 0, 0);
+      public Student(String nm, int t[]){
+		name = nm;
+                test = t;
 	}
 
 	//Additonal Constructor
-	public Student(String nm, int t1, int t2, int t3) {
-		name = nm;
-		mark[0] = t1;
-		mark[1] = t2;
-		mark[2] = t3;
+	public Student(Student other) {
+		this (other.name, other.test);
 	}
 
 	//Another constructor
-	public Student(Student s) {
-		this(s.name, s.mark[0], s.mark[1], s.mark[2]);
-	}
+	
 
     /*
     other methods
@@ -37,67 +33,78 @@ public class Student {
     public void setName(String nm) {
     	name = nm;
     }
+public void setScore (int i, int score) {
+    test[i-1] = score;
+}
+public int getScore (int i)
+{
+    return test [i-1];
+}
 
     public void setMark(int whichmark, int number){
     	if (whichmark == 1) {
-    		mark[0] = number;
+    		test[0] = number;
     	} else if (whichmark == 2) {
-    		mark[1] = number;
+    		test[1] = number;
     	} else{
 
-    		mark[2] = number;
+    		test[2] = number;
     	}
     }
 
     public int getAverage() {
-    	int average = (mark[0] + mark[1] + mark[2]) / 3;
+    	int average = (test[0] + test[1] + test[2]) / 3;
     	return average;
     }
 
 
     public int getMark(int whichmark) {
-	if (whichmark == 1) return mark[0];
-	else if (whichmark ==2) return mark[1];
-	else return mark[2];
+	if (whichmark == 1) return test[0];
+	else if (whichmark ==2) return test[1];
+	else return test[2];
     }
 
     public int getHighscore() {
-    	if (mark[0] > mark[1] && mark[0] > mark[2]) {
-    		return mark[0];
+    	if (test[0] > test[1] && test[0] > test[2]) {
+    		return test[0];
     	}
-    	else if (mark[1] > mark[0] && mark[1] > mark[2]){
-    		return mark[3];
+    	else if (test[1] > test[0] &&test[1] > test[2]){
+    		return test[3];
 
     	} else {
-    		return mark[2];
+    		return test[2];
     	}
     }
 
     public String toString() {
-    	String result = "Name: " + name;
-    	result += "\nMark 1:\t" + mark[0];
-    	result += "\nMark 2:\t" + mark[1];
-    	result += "\nMark 3:\t" + mark[2];
-    	result += "\n~~~~~~~~~~~~~~~~~~";
-    	result += "\nAverage:\t" + getAverage();
-    	return result;
-    }
+    	String str;
+        str = "NAme:\t\t" + name + "\n";
+        str += "" + getAverage();
+        return str;
+     }
 
     public String getName() {
     	return name;
     }
 
     //validate data
-    public String validateData() {
-    	String message = null;
-    	//check if name is entered
-    	if (name.equals("")) 
-    		message += "\nName is required\nPlease re-enter all data";
-    	
-	if (mark[0] < 0 || mark[0] > 100 || mark[1] < 0 || mark[1] > 100 || mark[2] < 0 || mark[2] > 100) 
-    		message += "\nAt least one mark is out of range, please re-enter all data";
-	
-	return message;
-    	}
- }
+   public String validateData ()
+    {
+        String errormessage = null;
+        if (name.length() < 2)
+        {
+         errormessage = "name is required\n";   
+        }
+        if (test[0] <0 || test[0] >100 || test[1] <0 || test[1] >100 ||test[2] >100)
+        {
+          errormessage += ("At least one mark is not within acceptable range");  
+        }
+        if (errormessage !=null)
+        {
+          errormessage += ("\n Please re-enter all data.  ");
+        }
+        return errormessage;
+        
+    }
+}
 

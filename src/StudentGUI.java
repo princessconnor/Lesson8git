@@ -13,9 +13,18 @@ public class StudentGUI extends javax.swing.JFrame {
     /**
      * Creates new form StudentGUI
      */
+   Student s[];
+   int size, currentstudent;
+   
     public StudentGUI() {
         initComponents();
+   s = new Student[10];
+   size = 0;
+   currentstudent =-1;
+   
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
