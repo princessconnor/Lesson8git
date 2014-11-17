@@ -267,17 +267,17 @@ public class StudentGUI extends javax.swing.JFrame {
         form.setModal(true);
         form.setLocationRelativeTo(this);
         form.setVisible(true);
-        //this code wont run until popup is disposed
-        Student temp = form.getStudent();//get student from form
+       
+        Student temp = form.getStudent();
         
-            String em = temp.validateData(); // make sure its ok
-        if(em==null)//addit to list
+            String em = temp.validateData(); //validate
+        if(em==null)
         {    s[size]=temp;
             currentstudent=size;
             size++;
-            showStudent();//update display
+            showStudent();
     }
-        else // do not and show error
+        else
             JOptionPane.showMessageDialog(this, em);
             
     }//GEN-LAST:event_btnaddActionPerformed

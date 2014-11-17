@@ -26,6 +26,10 @@ public String getName()
     return txtname.getText();
     
 }
+ public Student getStudent()
+ {
+     return temp;
+ }
  public void setForm(Student s) {
         DefaultTableModel model = (DefaultTableModel) (tblmarks.getModel());
         txtname.setText(s.getName());
@@ -33,10 +37,7 @@ public String getName()
         model.setValueAt(s.getScore(2), 0, 1);
         model.setValueAt(s.getScore(3), 0, 2);
     }
- public Student getStudent()
- {
-     return temp;
- }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
