@@ -2,12 +2,12 @@ import javax.swing.ImageIcon;
 import java.net.URL;
 public class CrapsGUI extends javax.swing.JFrame {
 
-    int $;
+    int money;
     Craps game;
-    boolean newg;
+    boolean newgame;
     public CrapsGUI() {
         initComponents();
-    newg = true;
+    newgame = true;
     game = new Craps();
     
     }
@@ -38,6 +38,11 @@ public class CrapsGUI extends javax.swing.JFrame {
         lbldie1.setBorder(new javax.swing.border.MatteBorder(null));
 
         btnquit.setText("Quit");
+        btnquit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquitActionPerformed(evt);
+            }
+        });
 
         txtgame.setColumns(20);
         txtgame.setRows(5);
@@ -110,16 +115,40 @@ public class CrapsGUI extends javax.swing.JFrame {
             
             txtgame.setText("New Game\n----\nYou rolled a: "+game.getTotal());
             newgame=false; //make it so its not a new game anymore
-            money-=5; //charge 5 dollars for new game
-            lblmoney.setText("$ "+money);//update money display
+            money-=5; //charge 5 dollars 
+            lblmoney.setText("$ "+ money);//update money
         }
         else 
             txtgame.append("\nYou rolled a: "+game.getTotal());
         
-        //update big total number at the side
+        //update  total 
         lblmoney.setText(" "+game.getTotal());
-        //determine if game.hasWon() or game.hasLost()
+        // determine if game.hasWon() or game.hasLost()
+        //FINISH
+         if(game.hasWon())
+         {
+           money+=15;
+             txtgame.append("\nYOU WON!\nPress the roll button to play again.\n");
+           lblmoney.setText("$ "+money);
+           newgame=true;
+           game = new Craps();
+        }
+          else if(game.hasLost())
+          {
+           txtgame.append("\nYOU LOST!\nPress roll button to play again.\n");
+           newgame=true;
+           game = new Craps();
+        }
+          else 
+          {
+              txtgame.append("\nYou're still alive! :) \nYou need to roll a nuber " + game.getPoint() + " to win");
+          }
+        
     }//GEN-LAST:event_btnrollActionPerformed
+
+    private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_btnquitActionPerformed
 
     public static void main(String args[]) {
        
