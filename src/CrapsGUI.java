@@ -106,16 +106,17 @@ public class CrapsGUI extends javax.swing.JFrame {
     private void btnrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrollActionPerformed
 
 
-   //roll both die assume our Craps game is called 'game'
+   //roll both die 
         game.roll();
-        //display die images
+        //display  images
         lbldie1.setIcon(game.getDiePic(1));
         lbldie2.setIcon(game.getDiePic(2));
        
-        if(newgame){
+        if(newgame)
+        {
             
             txtgame.setText("New Game\n----\nYou rolled a: "+game.getTotal());
-            newgame=false; //make it so its not a new game anymore
+            newgame=false;
             money-=5; //charge 5 dollars 
             lblmoney.setText("$ "+ money);//update money
         }
@@ -142,7 +143,7 @@ public class CrapsGUI extends javax.swing.JFrame {
         }
           else 
           {
-              txtgame.append("\nYou're still alive! :) \nYou need to roll a nuber " + game.getPoint() + " to win");
+              txtgame.append("\nYou're still alive! :) \n roll again!");
           }
         
     }//GEN-LAST:event_btnrollActionPerformed
