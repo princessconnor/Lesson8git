@@ -8,6 +8,7 @@ public class CrapsGUI extends javax.swing.JFrame {
     public CrapsGUI() {
         initComponents();
     newgame = true;
+    money = 100;
     game = new Craps();
     
     }
