@@ -298,7 +298,7 @@ StudentPopup form = new StudentPopup(this, true);
             }
             else
             {
-                JOptionPane.showMessageDialog(this,em);
+                JOptionPane.showMessageDialog(this, em);
             }
 // TODO add your handling code here:
     }//GEN-LAST:event_btnmodifyActionPerformed
