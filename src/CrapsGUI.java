@@ -106,7 +106,7 @@ public class CrapsGUI extends javax.swing.JFrame {
     private void btnrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrollActionPerformed
 
 
-   //roll both die 
+   //roll die 
         game.roll();
         //display  images
         lbldie1.setIcon(game.getDiePic(1));
@@ -121,7 +121,7 @@ public class CrapsGUI extends javax.swing.JFrame {
             lblmoney.setText("$ "+ money);//update money
         }
         else 
-            txtgame.append("\nYou rolled a: "+game.getTotal());
+            txtgame.append("\nyou rolled a: -> "+game.getTotal());
         
         //update  total 
         lblmoney.setText(" "+game.getTotal());
@@ -134,13 +134,13 @@ public class CrapsGUI extends javax.swing.JFrame {
            lblmoney.setText("$ "+money);
            newgame=true;
            game = new Craps();
-        }
+         }
           else if(game.hasLost())
           {
            txtgame.append("\nYOU LOST!\nPress roll button to play again.\n");
            newgame=true;
            game = new Craps();
-        }
+          }
           else 
           {
               txtgame.append("\nYou're still alive! :) \n roll again!");
@@ -149,7 +149,8 @@ public class CrapsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnrollActionPerformed
 
     private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
-       this.dispose();
+      //QUIT
+        System.exit(0);
     }//GEN-LAST:event_btnquitActionPerformed
 
     public static void main(String args[]) {
